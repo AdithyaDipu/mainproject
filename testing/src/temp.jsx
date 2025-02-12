@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import './CropRecommendation.css';
 
-function CropRecommendation() {
+
+function CropRecommendation({ weatherData }) {
   const [formData, setFormData] = useState({
     Nitrogen: '',
     Phosporus: '',
@@ -15,6 +17,18 @@ function CropRecommendation() {
   const [selectedCrops, setSelectedCrops] = useState([]);
   const [documentId, setDocumentId] = useState(null);
   const [status, setStatus] = useState('');
+
+  // Automatically update Temperature, Humidity, and Rainfall from weatherData
+  useEffect(() => {
+    if (weatherData) {
+      setFormData((prevData) => ({
+        ...prevData,
+        Temperature: weatherData.temperature || '',
+        Humidity: weatherData.humidity || '',
+        Rainfall: weatherData.rainfallPercentage || '',
+      }));
+    }
+  }, [weatherData]);
 
   // Handle input changes
   const handleChange = (e) => {
@@ -34,7 +48,7 @@ function CropRecommendation() {
       });
       const data = await response.json();
       setResult(data.top_5_crops);
-      setDocumentId(data.document_id); // Save the document ID for later
+      setDocumentId(data.document_id);
       setStatus('Prediction successful! Select crops to save.');
     } catch (error) {
       console.error('Error fetching prediction:', error);

@@ -1,16 +1,17 @@
-import { useState } from 'react'
-
-import Temp from './temp'
+import React, { useState } from "react";
+import WeatherLocation from "./weather";
+import CropRecommendation from "./temp";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [weatherData, setWeatherData] = useState(null);
 
   return (
-    <>
-    <Temp></Temp>
-      
-    </>
-  )
+    <div>
+      <h1>Smart Agro Assistant</h1>
+      <WeatherLocation onWeatherData={setWeatherData} />
+      <CropRecommendation weatherData={weatherData} />
+    </div>
+  );
 }
 
-export default App
+export default App;

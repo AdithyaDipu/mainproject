@@ -1,0 +1,124 @@
+/* General styling */
+body {
+    font-family: Arial, sans-serif;
+    background: url('./assets/treeimage.png') no-repeat center center fixed;
+    background-size: cover; /* Adjusts the size to cover the entire screen */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat;
+    width: 100vw; /* Full viewport width */
+    height: 100vh; /* Full viewport height */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+/* If you want a specific size instead of cover */
+body.custom-size {
+    background-size: 80% auto; /* Width 80% of viewport, height auto */
+}
+
+/* If you want to restrict height */
+body.limited-height {
+    background-size: 100% 90vh; /* Full width, height limited to 90% of viewport */
+}
+
+/* Container */
+div {
+    width: 90%;
+    max-width: 500px;
+    background: rgba(255, 255, 255, 0.9); /* Adds a slight transparency effect */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Heading */
+h1 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+/* Form styling */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Button styles */
+button {
+    background-color: #68b079;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #6dc780;
+}
+
+/* Status message */
+p {
+    font-size: 16px;
+    color: #333;
+    margin-top: 10px;
+}
+
+/* Crop recommendations */
+h2 {
+    font-size: 20px;
+    margin-top: 20px;
+    color: #444;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #e9ecef;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+}
+
+label {
+    font-size: 16px;
+    color: #333;
+}
+
+/* Checkbox styling */
+input[type="checkbox"] {
+    transform: scale(1.2);
+    margin-right: 10px;
+}
+
+/* Save button */
+button:last-child {
+    background-color: 14AE5C;
+}
+
+button:last-child:hover {
+    background-color: #96e5ae;
+}
