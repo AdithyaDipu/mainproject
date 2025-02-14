@@ -1,0 +1,47 @@
+.project-selection-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f4f7;
+    text-align: center;
+  }
+  
+  .project-selection-title {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 40px;
+  }
+  
+  .button-group {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .project-button {
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 12px;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .new-project {
+    background-color: #4CAF50;
+  }
+  
+  .new-project:hover {
+    background-color: #45a049;
+  }
+  
+  .existing-project {
+    background-color: #2196F3;
+  }
+  
+  .existing-project:hover {
+    background-color: #1976D2;
+  }
+  

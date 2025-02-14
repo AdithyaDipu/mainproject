@@ -17,7 +17,7 @@ const WeatherLocation = ({ onWeatherData }) => {
         navigator.geolocation.getCurrentPosition(
           async (position) => {
             const { latitude, longitude } = position.coords;
-            const apiKey = "07a41fe95b566e2dffc44e55183f636e"; // Replace with your API key
+            const apiKey = "866888b944d4f11f8ece25aae6bc09ef"; // Replace with your API key
             const apiUrl = `http://api.weatherstack.com/current?access_key=${apiKey}&query=${latitude},${longitude}`;
 
             const response = await fetch(apiUrl);

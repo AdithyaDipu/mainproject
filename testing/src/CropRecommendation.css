@@ -1,124 +1,136 @@
-/* General styling */
-body {
-    font-family: Arial, sans-serif;
-    background: url('./assets/treeimage.png') no-repeat center center fixed;
-    background-size: cover; /* Adjusts the size to cover the entire screen */
-    background-position: center; /* Centers the image */
-    background-repeat: no-repeat;
-    width: 100vw; /* Full viewport width */
-    height: 100vh; /* Full viewport height */
-    margin: 0;
-    padding: 0;
+/* ----------------------- */
+/* CropRecommendation Page */
+/* ----------------------- */
+
+/* Scoped with .crop-recommendation-page */
+.crop-recommendation-page {
+    --crop-bg-image: url('./assets/treeimage.png');
+    --crop-bg-color: rgba(255, 255, 255, 0.9);
+    --crop-primary-color: #68b079;
+    --crop-hover-color: #6dc780;
+    --crop-text-color: #333;
+    --crop-title-color: #2f4f4f;
+    --crop-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    --crop-border-color: #ccc;
+
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    
-}
-
-/* If you want a specific size instead of cover */
-body.custom-size {
-    background-size: 80% auto; /* Width 80% of viewport, height auto */
-}
-
-/* If you want to restrict height */
-body.limited-height {
-    background-size: 100% 90vh; /* Full width, height limited to 90% of viewport */
+    background: var(--crop-bg-image) no-repeat center center fixed;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
 }
 
 /* Container */
-div {
+.crop-container {
     width: 90%;
     max-width: 500px;
-    background: rgba(255, 255, 255, 0.9); /* Adds a slight transparency effect */
+    background: var(--crop-bg-color);
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--crop-shadow);
     text-align: center;
 }
 
 /* Heading */
-h1 {
-    font-size: 24px;
-    color: #333;
-    margin-bottom: 15px;
+.crop-title {
+    font-size: 26px;
+    color: var(--crop-title-color);
+    margin-bottom: 20px;
 }
 
 /* Form styling */
-form {
+.crop-form {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
 }
 
-input {
+/* Input styling */
+.crop-input-group input {
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
+    padding: 12px;
+    border: 1px solid var(--crop-border-color);
     border-radius: 5px;
     font-size: 16px;
+    box-sizing: border-box;
 }
 
 /* Button styles */
-button {
-    background-color: #68b079;
+.crop-btn {
+    background-color: var(--crop-primary-color);
     color: white;
-    padding: 10px;
+    padding: 12px;
     border: none;
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
-    margin-top: 10px;
+    margin-top: 15px;
+    transition: background-color 0.3s;
 }
 
-button:hover {
-    background-color: #6dc780;
+.crop-btn:hover {
+    background-color: var(--crop-hover-color);
 }
 
 /* Status message */
-p {
-    font-size: 16px;
-    color: #333;
-    margin-top: 10px;
+.crop-status {
+    font-size: 18px;
+    color: var(--crop-text-color);
+    margin-top: 15px;
+    margin-bottom: 20px;
+    font-weight: 500;
 }
 
 /* Crop recommendations */
-h2 {
-    font-size: 20px;
-    margin-top: 20px;
-    color: #444;
+.crop-result-title {
+    font-size: 22px;
+    color: var(--crop-title-color);
+    margin-top: 25px;
 }
 
-ul {
+.crop-list {
     list-style-type: none;
     padding: 0;
+    margin-top: 15px;
 }
 
-li {
+.crop-item {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: #e9ecef;
-    padding: 10px;
+    background: #e6f7e6;
+    padding: 12px;
     margin: 5px 0;
     border-radius: 5px;
+    border: 1px solid #d4edda;
+    transition: background-color 0.3s;
 }
 
-label {
-    font-size: 16px;
-    color: #333;
+.crop-item:hover {
+    background-color: #d1f5d3;
+}
+
+.crop-label {
+    font-size: 18px;
+    color: var(--crop-text-color);
 }
 
 /* Checkbox styling */
-input[type="checkbox"] {
-    transform: scale(1.2);
-    margin-right: 10px;
+.crop-item input[type="checkbox"] {
+    transform: scale(1.4);
+    margin-right: 12px;
+    cursor: pointer;
 }
 
 /* Save button */
-button:last-child {
-    background-color: 14AE5C;
+.crop-btn.save-btn {
+    margin-top: 20px;
+    background-color: #217345;
 }
 
-button:last-child:hover {
-    background-color: #96e5ae;
+.crop-btn.save-btn:hover {
+    background-color: #1c5c3a;
 }
