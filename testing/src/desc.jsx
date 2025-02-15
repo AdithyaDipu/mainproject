@@ -1,44 +1,38 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { UserContext } from '../UserContext';
 
 function ProjectEntries() {
-  const [projectName, setProjectName] = useState('');
+  const { user } = useContext(UserContext);  // Get the logged-in user info
   const [entries, setEntries] = useState([]);
   const [status, setStatus] = useState('');
   const [selectedCrop, setSelectedCrop] = useState('');
   const [cropDetails, setCropDetails] = useState(null);
   const [error, setError] = useState('');
 
-  // Handle input change
-  const handleInputChange = (e) => {
-    setProjectName(e.target.value);
-  };
+  useEffect(() => {
+    const fetchUserProjects = async () => {
+      if (!user) return;
+      setStatus('Fetching your projects...');
+      try {
+        const response = await fetch(`http://127.0.0.1:5000/get-user-projects?email=${user.email}`);
+        const data = await response.json();
 
-  // Fetch entries by project name
-  const handleFetchEntries = async () => {
-    if (!projectName) {
-      setStatus('Please enter a project name!');
-      return;
-    }
-
-    setStatus('Fetching entries...');
-    try {
-      const response = await fetch(`http://127.0.0.1:5000/get-project-entries?project_name=${projectName}`);
-      const data = await response.json();
-
-      if (response.ok) {
-        setEntries(data.entries);
-        setStatus(`Found ${data.entries.length} entries for project: "${projectName}"`);
-      } else {
-        setEntries([]);
-        setStatus(data.message || 'Failed to fetch entries.');
+        if (response.ok) {
+          setEntries(data.entries);
+          setStatus(`Found ${data.entries.length} project(s) under your email.`);
+        } else {
+          setEntries([]);
+          setStatus(data.message || 'No projects found.');
+        }
+      } catch (err) {
+        console.error('Error fetching projects:', err);
+        setStatus('An error occurred while fetching your projects.');
       }
-    } catch (error) {
-      console.error('Error fetching entries:', error);
-      setStatus('An error occurred while fetching entries.');
-    }
-  };
+    };
 
-  // Handle click event for crop tiles
+    fetchUserProjects();
+  }, [user]);
+
   const handleCropClick = (crop) => {
     setSelectedCrop(crop);
     fetch(`http://127.0.0.1:5000/get-crop-details?crop_name=${crop}`)
@@ -61,18 +55,7 @@ function ProjectEntries() {
 
   return (
     <div className="container">
-      <h2>🔍 Search Project Entries</h2>
-      <div className="input-box">
-        <input
-          type="text"
-          placeholder="Enter Project Name"
-          value={projectName}
-          onChange={handleInputChange}
-          className="project-input"
-        />
-        <button className="fetch-btn" onClick={handleFetchEntries}>Fetch Entries</button>
-      </div>
-
+      <h2>🌾 Your Projects</h2>
       <p className="status">{status}</p>
 
       {entries.length > 0 && (

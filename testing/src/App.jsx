@@ -1,10 +1,10 @@
-import React from 'react';
-import ProjectSelection from './divide';
+import React from "react";
+import AgroAssistant from "./AgroAssistant";
 
 function App() {
   return (
-    <div className="App">
-      <ProjectSelection/>
+    <div>
+      <AgroAssistant />
     </div>
   );
 }
